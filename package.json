@@ -1,0 +1,33 @@
+{
+  "name": "starhub-api",
+  "version": "1.0.0",
+  "description": "API for StarHub - a tool that tracks your GitHub stars so you don't have to.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techsyndicate/starhub-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "bugs": {
+    "url": "https://github.com/techsyndicate/starhub-api/issues"
+  },
+  "homepage": "https://github.com/techsyndicate/starhub-api#readme"
+}
