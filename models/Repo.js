@@ -18,6 +18,10 @@ const RepoSchema = new mongoose.Schema({
         type: Array,
         default: [],
         required: false,
+    },
+    webhook_id: {
+        type: String,
+        required: true
     }
 })
 
