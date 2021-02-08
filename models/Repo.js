@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const RepoSchema = new mongoose.Schema({
-    owner: {
-        type: String,
-        required: true,
-    },
     repoName: {
         type: String,
         required: true
@@ -19,8 +15,8 @@ const RepoSchema = new mongoose.Schema({
         default: [],
         required: false,
     },
-    webhook_id: {
-        type: String,
+    webhookId: {
+        type: Number,
         required: true
     }
 })
