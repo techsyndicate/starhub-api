@@ -35,7 +35,7 @@ router.get('/callback', (req, res) => {
                     }
                 }
             })
-            res.redirect(`http://localhost:15015/callback/${accessToken}`) //redirect for chrome extension to fetch token
+            res.redirect(`http://localhost:15015/callback/${accessToken}/${username}/${id}`) //redirect for chrome extension to fetch token
         })
         .catch(function(error) {
             console.log(error);
