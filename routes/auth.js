@@ -7,6 +7,10 @@ router.get('/', (req, res) => {
     res.redirect('https://github.com/login/oauth/authorize?client_id=2719a726baf6fc81a4a3&scope=admin:repo_hook,admin:org_hook')
 });
 
+router.get('/success', (req, res) => {
+    res.send('Authentication successful! you can now close this tab')
+});
+
 router.get('/callback', (req, res) => {
     let code = req.query.code
     axios.post('https://github.com/login/oauth/access_token', {
