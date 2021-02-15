@@ -20,6 +20,7 @@ app.use(cors());
 app.use('/', require('./routes/index'));
 app.use('/webhook', require('./routes/webhook'))
 app.use('/auth', require('./routes/auth'))
+app.use('/repos', require('./routes/repos'))
 
 const port = process.env.PORT || 5000;
 

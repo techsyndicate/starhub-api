@@ -6,14 +6,15 @@ const GITHUB_API_URL = 'https://api.github.com'
 
 router.get('/', async (req, res) => {
     const repo = req.query.repository
-    const user = req.query.user
+    const repoOwner = req.query.repoOwner
     const token = req.query.token
-    Repo.findOne({ repoName: `${user}/${repo}` }).then((repository) => {
+    const user = req.query.user
+    Repo.findOne({ repoName: `${repoOwner}/${repo}` }).then((repository) => {
       if(!repository) { 
-        const postData = { owner: `${user}`, repo: `${repo}`, events: ['star'], config: { url: `${process.env.BASE_URL}/webhook`, content_type: 'application/json; charset=utf-8' } }
+        const postData = { owner: `${repoOwner}`, repo: `${repo}`, events: ['star'], config: { url: `${process.env.BASE_URL}/webhook`, content_type: 'application/json; charset=utf-8' } }
         const postConfig = {
           method: 'post',
-          url: `${GITHUB_API_URL}/repos/${user}/${repo}/hooks`,
+          url: `${GITHUB_API_URL}/repos/${repoOwner}/${repo}/hooks`,
           headers: { 
             'Content-Type': 'application/json', 
             'Authorization': `Bearer ${token}`
@@ -24,18 +25,19 @@ router.get('/', async (req, res) => {
         .then(response => {
             console.log(response.data);
             let newRepo = Repo({
-              repoName: `${user}/${repo}`,
+              webhookCreator: user,
+              repoName: `${repoOwner}/${repo}`,
               webhookId: response.data.id
             })
             newRepo.save()
-            res.send("repo added")
+            res.send({"message": "repo added"})
             })
         .catch(err => {
-            res.send(err)
+            res.send({"message": "error"})
             console.log(err);
         })
       } else {
-        res.send("repo already exists")
+        res.send({"message": "repo already exists"})
       }
     })
 });

@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const RepoSchema = new mongoose.Schema({
+    webhookCreator: {
+        type: String,
+        required: true,
+    },
     repoName: {
         type: String,
         required: true
