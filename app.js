@@ -13,11 +13,17 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log("MongoDB connected.")
     });
 
+app.set('view engine', 'ejs');
+app.use('/public', express.static('public'))
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-app.use('/', require('./routes/index'));
+
+app.use('/', (req, res) => {
+    res.render('index')
+});
 app.use('/webhook', require('./routes/webhook'))
 app.use('/auth', require('./routes/auth'))
 app.use('/repos', require('./routes/repos'))
