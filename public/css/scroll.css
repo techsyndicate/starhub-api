@@ -1,0 +1,59 @@
+.scroll-down{
+	position: absolute;
+	top: 104%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.scroll-down span{
+	display: block;
+	width: 20px;
+	height: 20px;
+	border-bottom: 2px solid white;
+	border-right: 2px solid white;
+	transform: rotate(45deg);
+	margin: -10px;
+	animation: animate 2s infinite;
+}
+
+.scroll-down span:nth-child(2)
+{
+	animation-delay: -0.2s;
+}
+
+.scroll-down span:nth-child(3)
+{
+	animation-delay: -0.4s;
+}
+
+@keyframes animate{
+	
+	0%{
+		opacity: 0;
+		transform: rotate(45deg) translate(-20px, -20px);
+	}
+	50%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+		transform: rotate(45deg) translate(20px, 20px);
+	}
+}
+
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	background: black;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: white;
+  }
+  
