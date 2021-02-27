@@ -21,9 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 
-app.use('/', (req, res) => {
-    res.render('index')
-});
+app.use('/', require('./routes/index'))
 app.use('/webhook', require('./routes/webhook'))
 app.use('/auth', require('./routes/auth'))
 app.use('/repos', require('./routes/repos'))
